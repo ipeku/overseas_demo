@@ -26,6 +26,10 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    if (!form.email || !form.email.includes("@")) {
+      setError("Please enter a valid email address.");
+      return;
+    }
     try {
       const res = await api.post("/auth/login", form);
       login({ user: res.data.user, token: res.data.token });
@@ -51,7 +55,7 @@ export default function LoginPage() {
         <p style={{ color: "var(--muted)", marginTop: 0 }}>
           Demo users: student <code>ipekmelis@student.com</code> (pass: <strong>123</strong>) / consultant <code>jordan@consultant.com</code> / representative <code>alice@rep.com</code> / owner <code>anna@owner.com</code> (others use pass: <strong>password</strong>).
         </p>
-        <form onSubmit={handleSubmit} className="form-grid" style={{ display: "grid", gap: 14 }}>
+        <form onSubmit={handleSubmit} noValidate className="form-grid" style={{ display: "grid", gap: 14 }}>
           <label>
             Email
             <input
