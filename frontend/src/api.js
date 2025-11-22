@@ -91,6 +91,27 @@ const defaultState = {
       ]
     },
     {
+      id: "p11",
+      title: "Seine Riverside Dorm Pod",
+      city: "Paris",
+      country: "France",
+      price: 680,
+      type: "dorm",
+      description: "Modern dorm pod near the Seine with quick Metro access; calm building with student neighbors.",
+      lat: 48.8422,
+      lng: 2.3545,
+      ownerId: "u4",
+      ownerName: "Anna Bauer",
+      ownerEmail: "anna@owner.com",
+      hasRepresentative: true,
+      quality: { noise: "high", safety: "high", transport: "high", neighbors: "students", marketDistance: "close", transitDistance: "close", social: "good" },
+      features: { elevator: false, wifi: true, washer: false },
+      images: [
+        "https://images.unsplash.com/photo-1462396881884-de2c07cb95ed?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80"
+      ]
+    },
+    {
       id: "p2",
       title: "Quiet Charlottenburg Studio",
       city: "Berlin",
