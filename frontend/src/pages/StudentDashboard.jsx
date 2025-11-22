@@ -619,7 +619,7 @@ const consultantStatusText =
               <ul className="list-clean" style={{ color: "var(--muted)" }}>
                 <li>Call status: {consultantCallStatus}</li>
                 {consultantCall.date && consultantCall.time && (
-                  <li>Consultant Call: {consultantCall.date} {consultantCall.time} (status: {consultantCallStatus})</li>
+                  <li>Consultant call: {consultantCall.date} {consultantCall.time} (status: {consultantCallStatus})</li>
                 )}
               </ul>
             </div>
