@@ -31,10 +31,7 @@ export default function LoginPage() {
       const res = await api.post("/auth/login", form);
       login({ user: res.data.user, token: res.data.token });
 
-      if (res.data.user.role === "student") navigate("/student");
-      if (res.data.user.role === "consultant") navigate("/consultant");
-      if (res.data.user.role === "representative") navigate("/representative");
-      if (res.data.user.role === "owner") navigate("/owner");
+      navigate("/student");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
@@ -50,7 +47,7 @@ export default function LoginPage() {
           </div>
         </div>
         <p style={{ color: "var(--muted)", marginTop: 0 }}>
-          Demo users: student <code>ipekmelis@student.com</code> (pass: <strong>123</strong>) / consultant <code>jordan@consultant.com</code> / representative <code>alice@rep.com</code> / owner <code>anna@owner.com</code> (others use pass: <strong>password</strong>).
+          Demo user: student <code>ipekmelis@student.com</code> (pass: <strong>123</strong>).
         </p>
         <form onSubmit={handleSubmit} className="form-grid" style={{ display: "grid", gap: 14 }}>
           <label>
@@ -73,15 +70,6 @@ export default function LoginPage() {
               required
             />
           </label>
-          <label>
-            Role
-      <select name="role" value={form.role} onChange={handleChange}>
-        <option value="student">Student</option>
-        <option value="consultant">Consultant</option>
-        <option value="representative">Local representative</option>
-        <option value="owner">Owner</option>
-      </select>
-    </label>
           {error && <p style={{ color: "crimson", margin: 0 }}>{error}</p>}
           <button className="btn btn-primary" type="submit">
             Continue
