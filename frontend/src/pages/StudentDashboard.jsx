@@ -457,22 +457,24 @@ const consultantStatusText =
             <div className="card" style={{ marginTop: 0 }}>
               <h3 style={{ marginTop: 0 }}>Appointments</h3>
               <ul className="list-clean" style={{ color: "var(--muted)", lineHeight: 1.5 }}>
-                {appointments.length === 0 && <li>No scheduled appointments yet.</li>}
-                {appointments.map((a, idx) => (
-                  <li
-                    key={`${a.type}-${idx}`}
-                    style={{
-                      border: "1px solid var(--border)",
-                      borderRadius: 10,
-                      padding: "8px 10px",
-                      background: a.status === "approved_owner" || a.status === "approved"
-                        ? "linear-gradient(135deg, #e8fff4, #f6fffa)"
-                        : "#f8fafc"
-                    }}
-                  >
-                    {a.type}: {a.time} {a.status && a.status !== "approved" ? `(status: ${a.status})` : ""}
-                  </li>
-                ))}
+                {appointmentList.length === 0 && <li>No scheduled appointments yet.</li>}
+                {appointmentList.map((a, idx) => {
+                  const normalizedStatus = normalizeStatus(a.status);
+                  const highlight = normalizedStatus === "approved";
+                  return (
+                    <li
+                      key={`${a.type}-${idx}`}
+                      style={{
+                        border: "1px solid var(--border)",
+                        borderRadius: 10,
+                        padding: "8px 10px",
+                        background: highlight ? "linear-gradient(135deg, #e8fff4, #f6fffa)" : "#f8fafc"
+                      }}
+                    >
+                      {a.type}: {a.time} {normalizedStatus && normalizedStatus !== "approved" ? `(status: ${normalizedStatus})` : ""}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -483,7 +485,7 @@ const consultantStatusText =
               </div>
               {consultantCall.date && consultantCall.time && (
                 <div style={{ color: "var(--muted)" }}>
-                  consultant_call: {consultantCall.date} {consultantCall.time} (status: {consultantCall.status || "pending"})
+                  Consultant call: {consultantCall.date} {consultantCall.time} (status: {consultantCallStatus})
                 </div>
               )}
               {hasConsultant && (
