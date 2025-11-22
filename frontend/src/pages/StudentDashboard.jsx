@@ -329,6 +329,7 @@ const consultantStatusText =
     ? "Please add date and time."
     : "";
   const normalizeStatus = (status) => (status === "approved_owner" ? "approved" : status || "-");
+  const consultantCallStatus = consultantCall.status === "idle" ? "pending" : consultantCall.status || "pending";
 
   const ownerMap = {
     u4: "Anna Bauer",
@@ -616,9 +617,9 @@ const consultantStatusText =
             <div className="card" style={{ display: "grid", gap: 8 }}>
               <h3 style={{ marginTop: 0 }}>Consultant requests</h3>
               <ul className="list-clean" style={{ color: "var(--muted)" }}>
-                <li>Call status: {consultantCall.status === "idle" ? "Not requested" : consultantCall.status}</li>
+                <li>Call status: {consultantCallStatus}</li>
                 {consultantCall.date && consultantCall.time && (
-                  <li>consultant_call: {consultantCall.date} {consultantCall.time} (status: {consultantCall.status || "pending"})</li>
+                  <li>consultant_call: {consultantCall.date} {consultantCall.time} (status: {consultantCallStatus})</li>
                 )}
               </ul>
             </div>
@@ -768,7 +769,7 @@ const consultantStatusText =
               {appointmentList.filter((a) => a.type.includes("Representative")).length === 0 && <li>No representative appointments yet.</li>}
               {appointmentList.filter((a) => a.type.includes("Representative")).map((a, idx) => (
                 <li key={`rapp-${idx}`} style={{ border: "1px solid var(--border)", borderRadius: 10, padding: "8px 10px", background: "#f8fafc" }}>
-                  {a.type}: {a.time} {a.status && a.status !== "approved" ? `(status: ${a.status})` : ""}
+                  {a.type}: {a.time} {normalizeStatus(a.status) && normalizeStatus(a.status) !== "approved" ? `(status: ${normalizeStatus(a.status)})` : ""}
                 </li>
               ))}
             </ul>

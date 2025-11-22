@@ -68,7 +68,7 @@ export default function PropertyDetail({
   }
 
   const existingReq = repRequests.find((r) => r.propertyId === property.id && r.status !== "terminated");
-  const videoEnabled = existingReq && existingReq.status === "approved_owner";
+  const videoEnabled = existingReq && (existingReq.status === "approved_owner" || existingReq.status === "approved");
   const allowRepMessaging = !!existingReq;
   const canStartVideo = videoEnabled && !sessionTerminated;
   const displayStatus = (status) => (status === "approved_owner" ? "approved" : status || "-");
