@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../api";
 import { useAuth } from "../context/AuthContext";
 
@@ -48,9 +48,6 @@ export default function LoginPage() {
             <div className="eyebrow">Welcome back</div>
             <h2 style={{ margin: 0 }}>Log in</h2>
           </div>
-          <Link className="btn btn-secondary" to="/register">
-            Create account
-          </Link>
         </div>
         <p style={{ color: "var(--muted)", marginTop: 0 }}>
           Demo users: student <code>ipekmelis@student.com</code> (pass: <strong>123</strong>) / consultant <code>jordan@consultant.com</code> / representative <code>alice@rep.com</code> / owner <code>anna@owner.com</code> (others use pass: <strong>password</strong>).
