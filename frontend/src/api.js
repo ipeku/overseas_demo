@@ -2,7 +2,7 @@
 // Data is persisted in localStorage to keep the experience consistent across refreshes.
 
 // Bump key to refresh seeded data (new listings and defaults)
-const STORAGE_KEY = "mock-api-state-v5";
+const STORAGE_KEY = "mock-api-state-v6";
 
 const defaultState = {
   users: [
@@ -75,7 +75,7 @@ const defaultState = {
       title: "Left Bank Student Dorm Pod",
       city: "Paris",
       country: "France",
-      price: 1111,
+      price: 450,
       type: "dorm",
       description: "Quiet dorm pod near Sorbonne and Metro; ideal for students who want fast transit and calm nights.",
       lat: 48.8465,
