@@ -6,8 +6,7 @@ import { useAuth } from "../context/AuthContext";
 export default function LoginPage() {
   const [form, setForm] = useState({
     email: "",
-    password: "",
-    role: "student"
+    password: ""
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -31,7 +30,10 @@ export default function LoginPage() {
       const res = await api.post("/auth/login", form);
       login({ user: res.data.user, token: res.data.token });
 
-      navigate("/student");
+      if (res.data.user.role === "student") navigate("/student");
+      if (res.data.user.role === "consultant") navigate("/consultant");
+      if (res.data.user.role === "representative") navigate("/representative");
+      if (res.data.user.role === "owner") navigate("/owner");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
@@ -47,7 +49,7 @@ export default function LoginPage() {
           </div>
         </div>
         <p style={{ color: "var(--muted)", marginTop: 0 }}>
-          Demo user: student <code>ipekmelis@student.com</code> (pass: <strong>123</strong>).
+          Demo users: student <code>ipekmelis@student.com</code> (pass: <strong>123</strong>) / consultant <code>jordan@consultant.com</code> / representative <code>alice@rep.com</code> / owner <code>anna@owner.com</code> (others use pass: <strong>password</strong>).
         </p>
         <form onSubmit={handleSubmit} className="form-grid" style={{ display: "grid", gap: 14 }}>
           <label>
