@@ -2,7 +2,7 @@
 // Data is persisted in localStorage to keep the experience consistent across refreshes.
 
 // Bump key to refresh seeded data (new listings and defaults)
-const STORAGE_KEY = "mock-api-state-v2";
+const STORAGE_KEY = "mock-api-state-v3";
 
 const defaultState = {
   users: [
@@ -108,8 +108,8 @@ const defaultState = {
       quality: { noise: "high", safety: "high", transport: "high", neighbors: "students", marketDistance: "close", transitDistance: "close", social: "good" },
       features: { elevator: false, wifi: true, washer: false },
       images: [
-        "https://images.unsplash.com/photo-1462396881884-de2c07cb95ed?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80"
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1484156818044-c040038b0710?auto=format&fit=crop&w=900&q=80"
       ]
     },
     {
