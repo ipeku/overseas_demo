@@ -370,7 +370,7 @@ const consultantStatusText =
     if (typeof value !== "string") return value;
     if (!value) return value;
     if (/^eur\b/i.test(value)) return value;
-    return value.toLowerCase();
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   };
 
   return (
