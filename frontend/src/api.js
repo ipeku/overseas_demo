@@ -1,7 +1,8 @@
 // Frontend-only mock API so the demo runs without any backend.
 // Data is persisted in localStorage to keep the experience consistent across refreshes.
 
-const STORAGE_KEY = "mock-api-state";
+// Bump key to refresh seeded data (new listings and defaults)
+const STORAGE_KEY = "mock-api-state-v2";
 
 const defaultState = {
   users: [

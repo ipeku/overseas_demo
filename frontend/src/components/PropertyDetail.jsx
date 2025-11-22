@@ -66,6 +66,13 @@ export default function PropertyDetail({
   while (images.length < 3 && allowFallbackImages) {
     images.push(placeholderImages[images.length % placeholderImages.length]);
   }
+  // Force housing/dorm visuals for consistency
+  const housingImages = [
+    "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1484156818044-c040038b0710?auto=format&fit=crop&w=900&q=80"
+  ];
+  const finalImages = (images.length ? images : housingImages).map((_, idx) => housingImages[idx % housingImages.length]);
 
   const existingReq = repRequests.find((r) => r.propertyId === property.id && r.status !== "terminated");
   const videoEnabled = existingReq && (existingReq.status === "approved_owner" || existingReq.status === "approved");
@@ -162,16 +169,16 @@ export default function PropertyDetail({
         <PropertyMap property={property} />
       </div>
 
-      {images.length > 0 && (
+      {finalImages.length > 0 && (
         <div style={{ display: "grid", gap: 8, gridTemplateColumns: "repeat(3, minmax(0, 1fr))", marginTop: 10 }}>
-          {images.map((img, idx) => (
+          {finalImages.map((img, idx) => (
             <img
               key={`${property.id}-img-${idx}`}
               src={img}
               onError={(e) => {
                 if (e.target.dataset.fallback) return;
                 e.target.dataset.fallback = "1";
-                e.target.src = placeholderImages[0];
+                e.target.src = housingImages[0];
               }}
               alt={property.title}
               style={{ width: "100%", borderRadius: 12, objectFit: "cover" }}
