@@ -2,7 +2,7 @@
 // Data is persisted in localStorage to keep the experience consistent across refreshes.
 
 // Bump key to refresh seeded data (new listings and defaults)
-const STORAGE_KEY = "mock-api-state-v3";
+const STORAGE_KEY = "mock-api-state-v4";
 
 const defaultState = {
   users: [
