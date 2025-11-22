@@ -71,6 +71,7 @@ export default function PropertyDetail({
   const videoEnabled = existingReq && existingReq.status === "approved_owner";
   const allowRepMessaging = !!existingReq;
   const canStartVideo = videoEnabled && !sessionTerminated;
+  const displayStatus = (status) => (status === "approved_owner" ? "approved" : status || "-");
 
   const handleRepPrefChange = (e) => {
     const { name, value } = e.target;
@@ -311,7 +312,7 @@ export default function PropertyDetail({
             {requestStatus && <div style={{ color: "var(--muted)" }}>{requestStatus}</div>}
             {existingReq && (
               <div style={{ color: "var(--muted)" }}>
-                Current status: {existingReq.status === "approved_owner" ? "APPROVED (owner confirmed)" : existingReq.status.toUpperCase()}
+                Current status: {displayStatus(existingReq.status).toUpperCase()}
               </div>
             )}
           </form>

@@ -29,7 +29,7 @@ export default function LandingPage() {
           <p>{intro}</p>
           <div className="hero-actions">
             <Link className="btn btn-primary" to={primaryCta}>
-              {isAuthed ? "Go to dashboard" : "Start now"}
+              {isAuthed ? "Go to dashboard" : "Create account"}
             </Link>
           </div>
         </div>
